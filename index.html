@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Софии 6 лет — Северное сияние</title>
+
+  <style>
+    :root {
+      --night: #071832;
+      --blue: #157ec0;
+      --ice: #c9f5ff;
+      --violet: #9d78dd;
+      --pink: #ff9dca;
+      --pink-light: #ffd0e5;
+      --pink-dark: #c9588c;
+      --text: #eafaff;
+      --card: rgba(11, 46, 92, 0.62);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--text);
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at 50% 0%, #164b86 0%, #071832 48%, #030a18 100%);
+    }
+
+    .stars,
+    .stars::before,
+    .stars::after {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      content: "";
+      background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(#c7f5ff 1px, transparent 1px),
+        radial-gradient(white 1.5px, transparent 1.5px);
+      background-size: 90px 90px, 150px 150px, 230px 230px;
+      background-position: 0 0, 40px 80px, 100px 15px;
+      opacity: 0.55;
+    }
+
+    .stars::before {
+      animation: twinkle 4s ease-in-out infinite alternate;
+      opacity: 0.4;
+    }
+
+    .stars::after {
+      animation: twinkle 6s ease-in-out infinite alternate-reverse;
+      opacity: 0.25;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.2; }
+      to { opacity: 0.75; }
+    }
+
+    .hero {
+      min-height: 720px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      padding: 60px 20px 120px;
+      background:
+        linear-gradient(180deg, rgba(3, 12, 38, 0.20), rgba(3, 12, 38, 0.85)),
+        radial-gradient(ellipse at 20% 20%, rgba(42, 225, 204, 0.36), transparent 45%),
+        radial-gradient(ellipse at 75% 15%, rgba(160, 93, 237, 0.40), transparent 48%);
+    }
+
+    .aurora {
+      position: absolute;
+      top: -170px;
+      left: -10%;
+      width: 120%;
+      height: 480px;
+      opacity: 0.65;
+      filter: blur(22px);
+      background:
+        radial-gradient(ellipse at 20% 60%, #45f1ca 0%, transparent 40%),
+        radial-gradient(ellipse at 50% 40%, #58caff 0%, transparent 45%),
+        radial-gradient(ellipse at 78% 65%, #c279f2 0%, transparent 44%);
+      animation: auroraMove 9s ease-in-out infinite alternate;
+      transform: rotate(-8deg);
+    }
+
+    @keyframes auroraMove {
+      from { transform: translateX(-5%) rotate(-8deg) scale(1); }
+      to { transform: translateX(5%) rotate(5deg) scale(1.13); }
+    }
+
+    .hero-content {
+      max-width: 900px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .snowflake-top {
+      display: inline-block;
+      font-size: 46px;
+      color: var(--ice);
+      text-shadow: 0 0 20px #a8efff;
+      animation: spin 10s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .pretitle {
+      margin: 15px 0 12px;
+      color: #d8f8ff;
+      font-size: clamp(15px, 2.5vw, 20px);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: Georgia, serif;
+      font-size: clamp(54px, 11vw, 108px);
+      line-height: 0.95;
+      text-shadow: 0 0 16px #99eaff, 0 4px 3px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-description {
+      max-width: 640px;
+      margin: 24px auto;
+      font-size: clamp(18px, 3vw, 24px);
+      line-height: 1.55;
+    }
+
+    .hero-date {
+      margin: 20px 0 0;
+      color: var(--pink);
+      font-size: clamp(20px, 3vw, 27px);
+      font-weight: bold;
+      text-shadow: 0 0 12px rgba(255, 157, 202, 0.5);
+    }
+
+    .scroll-down {
+      display: inline-block;
+      margin-top: 44px;
+      color: white;
+      text-decoration: none;
+      font-size: 15px;
+      opacity: 0.9;
+      animation: float 2.5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      50% { transform: translateY(9px); }
+    }
+
+    main {
+      width: min(1040px, calc(100% - 32px));
+      margin: -65px auto 0;
+      position: relative;
+      z-index: 3;
+    }
+
+    .card {
+      margin-bottom: 25px;
+      padding: 36px;
+      border: 1px solid rgba(209, 248, 255, 0.55);
+      border-radius: 28px;
+      background: var(--card);
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.27);
+      backdrop-filter: blur(12px);
+    }
+
+    h2 {
+      margin: 0 0 23px;
+      color: white;
+      font-family: Georgia, serif;
+      font-size: clamp(28px, 4vw, 39px);
+      text-align: center;
+      text-shadow: 0 0 12px #89e3ff;
+    }
+
+    .subtitle {
+      max-width: 700px;
+      margin: -10px auto 22px;
+      color: #cdefff;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .info-item {
+      min-height: 175px;
+      padding: 22px 16px;
+      border: 1px solid rgba(202, 242, 255, 0.3);
+      border-radius: 20px;
+      text-align: center;
+      background: rgba(113, 190, 239, 0.12);
+    }
+
+    .info-icon {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 38px;
+    }
+
+    .info-item strong {
+      display: block;
+      color: var(--pink);
+      font-size: 19px;
+    }
+
+    .info-item span {
+      display: block;
+      margin-top: 8px;
+      line-height: 1.45;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 14px 25px;
+      border: 0;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--pink-light), #ff88bd);
+      color: #5c1740;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 4px 0 var(--pink-dark), 0 0 20px rgba(255, 136, 189, 0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 7px 0 var(--pink-dark), 0 0 28px rgba(255, 136, 189, 0.55);
+    }
+
+    .button-wrap {
+      margin-top: 25px;
+      text-align: center;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .countdown-item {
+      padding: 18px 10px;
+      border: 1px solid rgba(212, 246, 255, 0.5);
+      border-radius: 18px;
+      background: rgba(53, 148, 209, 0.2);
+      text-align: center;
+    }
+
+    .countdown-item b {
+      display: block;
+      color: var(--pink);
+      font-family: Georgia, serif;
+      font-size: clamp(31px, 5vw, 50px);
+      text-shadow: 0 0 12px rgba(255, 157, 202, 0.4);
+    }
+
+    .countdown-item span {
+      color: #d6f5ff;
+      font-size: 14px;
+    }
+
+    .program {
+      display: grid;
+      gap: 13px;
+      max-width: 780px;
+      margin: auto;
+    }
+
+    .program-item {
+      position: relative;
+      padding: 16px 18px 16px 60px;
+      border-radius: 16px;
+      background: rgba(122, 211, 255, 0.12);
+      line-height: 1.45;
+    }
+
+    .program-item::before {
+      content: "❄";
+      position: absolute;
+      top: 12px;
+      left: 20px;
+      color: #a9edff;
+      font-size: 24px;
+    }
+
+    .memo-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .memo-list li {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(119, 193, 239, 0.12);
+      line-height: 1.45;
+    }
+
+    .memo-list b {
+      color: var(--pink);
+    }
+
+    .confirmation {
+      text-align: center;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(100, 229, 255, 0.22), transparent 38%),
+        radial-gradient(circle at 85% 80%, rgba(255, 130, 190, 0.22), transparent 38%),
+        rgba(44, 83, 151, 0.66);
+    }
+
+    .confirmation p {
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    .confirmation-note {
+      margin-top: 12px !important;
+      color: #cfefff;
+      font-size: 15px !important;
+    }
+
+    .gift {
+      text-align: center;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255, 130, 190, 0.25), transparent 38%),
+        radial-gradient(circle at 80% 80%, rgba(193, 125, 255, 0.30), transparent 38%),
+        rgba(41, 62, 133, 0.66);
+    }
+
+    .gift p {
+      max-width: 680px;
+      margin: auto;
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    footer {
+      padding: 26px 20px 42px;
+      color: #b9dff0;
+      text-align: center;
+    }
+
+    .snow {
+      position: fixed;
+      top: -30px;
+      z-index: 20;
+      color: white;
+      pointer-events: none;
+      user-select: none;
+      text-shadow: 0 0 8px #d9fbff;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(360deg); }
+    }
+
+    @media (max-width: 700px) {
+      .hero { min-height: 650px; }
+
+      .card {
+        padding: 25px 18px;
+        border-radius: 22px;
+      }
+
+      .info-grid,
+      .memo-list {
+        grid-template-columns: 1fr;
+      }
+
+      .countdown { gap: 8px; }
+      .countdown-item { padding: 14px 5px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="stars"></div>
+
+  <header class="hero">
+    <div class="aurora"></div>
+
+    <div class="hero-content">
+      <div class="snowflake-top">❄</div>
+
+      <p class="pretitle">Приглашение на день рождения</p>
+
+      <h1>Софии<br>6 лет!</h1>
+
+      <p class="hero-description">
+        В этот волшебный день Эльза откроет двери в зимнюю сказку,
+        где будут смех, игры, чудеса и праздничное настроение!
+      </p>
+
+      <p class="hero-date">6 декабря 2026 · 14:00–17:00</p>
+
+      <p class="hero-description">
+        Праздник будет проходить в детской компании, поэтому при желании
+        родители могут спокойно заняться своими делами и доверить нам детей
+        на время праздника :)
+      </p>
+
+      <a class="scroll-down" href="#details">
+        Узнать детали праздника<br />
+        ↓
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="card" id="details">
+      <h2>Где пройдёт праздник?</h2>
+
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="info-icon">📅</span>
+          <strong>6 декабря 2026</strong>
+          <span>воскресенье</span>
+        </div>
+
+        <div class="info-item">
+          <span class="info-icon">🕑</span>
+          <strong>14:00–17:00</strong>
+          <span>Просим прибыть<br />за 10–15 минут</span>
+        </div>
+
+        <div class="info-item">
+          <span class="info-icon">🏰</span>
+          <strong>«Чудесария»</strong>
+          <span>г. Брянск,<br />ул. Советская, 110</span>
+        </div>
+      </div>
+
+      <div class="button-wrap">
+        <a class="button"
+           href="https://yandex.ru/maps/org/chudesariya/222300101077?si=gwtcmped8vebdp46bh4br7806w"
+           target="_blank"
+           rel="noopener">
+          Открыть карту 🗺️
+        </a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>До волшебной встречи</h2>
+
+      <div class="countdown" id="countdown">
+        <div class="countdown-item"><b id="days">0</b><span>дней</span></div>
+        <div class="countdown-item"><b id="hours">0</b><span>часов</span></div>
+        <div class="countdown-item"><b id="minutes">0</b><span>минут</span></div>
+        <div class="countdown-item"><b id="seconds">0</b><span>секунд</span></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Что ждёт гостей?</h2>
+
+      <p class="subtitle">
+        Праздник по мотивам любимой сказки именинницы — с аниматором Эльзой!
+      </p>
+
+      <div class="program">
+        <div class="program-item">Встреча гостей в волшебной атмосфере «Холодного сердца».</div>
+        <div class="program-item">Анимационная программа и мастер-класс вместе с Эльзой.</div>
+        <div class="program-item">Весёлое время в детском развлекательном центре «Чудесария».</div>
+        <div class="program-item">Поздравления, праздничный торт и самые тёплые воспоминания.</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Памятка для гостей</h2>
+
+      <ul class="memo-list">
+        <li>На территории центра дети и взрослые находятся <b>без обуви</b>. Возьмите с собой носочки или сменную обувь.</li>
+        <li>Просим приехать <b>за 10–15 минут</b> до начала праздника, чтобы спокойно подготовиться.</li>
+        <li>Игровые автоматы не входят в праздник и оплачиваются отдельно. Жетон — <b>60 ₽</b>.</li>
+        <li>Родителям малышей желательно находиться рядом с детьми и помогать соблюдать правила центра.</li>
+        <li>На территории центра <b>запрещено распитие алкогольных напитков</b>.</li>
+      </ul>
+    </section>
+
+    <section class="card confirmation">
+      <h2>Подтвердите участие ❄️</h2>
+
+      <p>
+        Пожалуйста, заполните небольшую форму, чтобы мы знали,
+        сколько гостей ждать в ледяном королевстве Софии.
+      </p>
+
+      <p class="confirmation-note">
+        В форме можно указать количество детей и взрослых, а также отметить,
+        будут ли дети с родителями или без сопровождения.
+      </p>
+
+      <div class="button-wrap">
+        <a class="button"
+           href="https://forms.yandex.ru/u/6af6bdcd4a052d0979b596d0"
+           target="_blank"
+           rel="noopener">
+          Подтвердить участие ✨
+        </a>
+      </div>
+    </section>
+
+    <section class="card gift">
+      <h2>Сундук желаний Софии 🎁</h2>
+
+      <p>
+        Ваше присутствие — самый важный подарок для Софии!<br />
+        Но если захочется порадовать именинницу чем-то особенным,
+        идеи для подарков спрятаны в её волшебном списке желаний.
+      </p>
+
+      <div class="button-wrap">
+        <a class="button"
+           href="https://followish.io/mywishlist/fnwuwihuffphuk"
+           target="_blank"
+           rel="noopener">
+          Открыть список желаний ✨
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    С нетерпением ждём вас на празднике Софии! ❄️
+  </footer>
+
+  <script>
+    const eventDate = new Date("2026-12-06T14:00:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const difference = eventDate - now;
+
+      if (difference <= 0) {
+        document.getElementById("countdown").innerHTML =
+          "<div style='grid-column:1/-1; font-size:24px; color:#ff9dca;'>Праздник уже начался! ✨</div>";
+        return;
+      }
+
+      document.getElementById("days").textContent =
+        Math.floor(difference / (1000 * 60 * 60 * 24));
+      document.getElementById("hours").textContent =
+        Math.floor((difference / (1000 * 60 * 60)) % 24);
+      document.getElementById("minutes").textContent =
+        Math.floor((difference / (1000 * 60)) % 60);
+      document.getElementById("seconds").textContent =
+        Math.floor((difference / 1000) % 60);
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    function createSnowflake() {
+      const snowflake = document.createElement("div");
+      snowflake.className = "snow";
+      snowflake.textContent = "❄";
+
+      snowflake.style.left = Math.random() * 100 + "vw";
+      snowflake.style.fontSize = 10 + Math.random() * 18 + "px";
+      snowflake.style.opacity = 0.3 + Math.random() * 0.7;
+      snowflake.style.animationDuration = 7 + Math.random() * 9 + "s";
+
+      document.body.appendChild(snowflake);
+      setTimeout(() => snowflake.remove(), 17000);
+    }
+
+    setInterval(createSnowflake, 550);
+  </script>
+</body>
+</html>
